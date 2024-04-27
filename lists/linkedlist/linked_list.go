@@ -46,3 +46,15 @@ func (l *List[T]) Size() int {
 func (l *List[T]) First() *Node[T] {
 	return l.first
 }
+
+func (l *List[T]) Items() []T {
+	var items []T
+
+	n := l.first
+	for range l.Size() {
+		items = append(items, n.Item)
+		n = n.next
+	}
+
+	return items
+}

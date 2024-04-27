@@ -57,3 +57,16 @@ func TestFirst(t *testing.T) {
 		require.Equal(t, &linkedlist.Node[int]{Item: 1}, list.First())
 	})
 }
+
+func TestItems(t *testing.T) {
+	t.Run("Returns a slice of all the items in the list", func(t *testing.T) {
+		list := linkedlist.NewList[int]()
+
+		list.Append(1)
+		list.Append(2)
+		list.Append(3)
+		list.Append(4)
+
+		require.Equal(t, []int{1, 2, 3, 4}, list.Items())
+	})
+}
