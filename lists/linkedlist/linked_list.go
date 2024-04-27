@@ -18,8 +18,18 @@ type List[T GenericItem] struct {
 	size  int
 }
 
-func New[T GenericItem]() *List[T] {
+func NewEmpty[T GenericItem]() *List[T] {
 	return &List[T]{}
+}
+
+func NewWithItems[T GenericItem](items ...T) *List[T] {
+	list := &List[T]{}
+
+	for _, v := range items {
+		list.Append(v)
+	}
+
+	return list
 }
 
 func (l *List[T]) Append(item T) *List[T] {
