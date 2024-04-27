@@ -51,7 +51,7 @@ func (l *List[T]) Items() []T {
 	var items []T
 
 	n := l.first
-	for range l.Size() {
+	for range l.size {
 		items = append(items, n.Item)
 		n = n.next
 	}
