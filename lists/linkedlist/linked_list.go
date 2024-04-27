@@ -28,3 +28,7 @@ func (l *List[T]) Append(node Node[T]) {
 func (l *List[T]) Size() int {
 	return l.size
 }
+
+func (l *List[T]) First() *Node[T] {
+	return l.first
+}
