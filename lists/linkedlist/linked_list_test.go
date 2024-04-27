@@ -83,3 +83,18 @@ func TestSize(t *testing.T) {
 		require.Equal(t, expectedSize, list.Size())
 	})
 }
+
+func TestIndexOf(t *testing.T) {
+	t.Run("Returns the node position containing item in the list", func(t *testing.T) {
+		list := linkedlist.New[int]()
+		list.Append(1)
+		list.Append(2)
+		list.Append(3)
+		list.Append(4)
+
+		found, index := list.IndexOf(2)
+
+		require.True(t, found)
+		require.Equal(t, 2, index)
+	})
+}

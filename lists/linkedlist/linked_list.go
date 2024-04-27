@@ -58,3 +58,16 @@ func (l *List[T]) Items() []T {
 
 	return items
 }
+
+func (l *List[T]) IndexOf(item T) (bool, int) {
+	n := l.first
+
+	for i := 0; i < l.size; i++ {
+		if n.Item == item {
+			return true, i + 1
+		}
+		n = n.next
+	}
+
+	return false, 0
+}
