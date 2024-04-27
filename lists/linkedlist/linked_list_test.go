@@ -74,10 +74,12 @@ func TestItems(t *testing.T) {
 func TestSize(t *testing.T) {
 	t.Run("Returns list size", func(t *testing.T) {
 		list := linkedlist.New[int]()
+		expectedSize := 100
 
-		list.Append(1)
-		list.Append(2)
+		for i := 0; i < expectedSize; i++ {
+			list.Append(i)
+		}
 
-		require.Equal(t, 2, list.Size())
+		require.Equal(t, expectedSize, list.Size())
 	})
 }
