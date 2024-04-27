@@ -20,8 +20,7 @@ func TestAppend(t *testing.T) {
 			t.Run("Creates and inserts item into the last node of the list as the second item", func(t *testing.T) {
 				list := linkedlist.New[int]()
 
-				list.Append(1)
-				list.Append(2)
+				list.Append(1).Append(2)
 
 				require.Equal(t, 2, list.Size())
 				require.Equal(t, 1, list.First().Item)
@@ -33,10 +32,7 @@ func TestAppend(t *testing.T) {
 			t.Run("Creates and inserts item into the last node of the list as the third item", func(t *testing.T) {
 				list := linkedlist.New[int]()
 
-				list.Append(1)
-				list.Append(2)
-				list.Append(3)
-				list.Append(4)
+				list.Append(1).Append(2).Append(3).Append(4)
 
 				require.Equal(t, 4, list.Size())
 				require.Equal(t, 1, list.First().Item)
@@ -61,13 +57,11 @@ func TestFirst(t *testing.T) {
 func TestItems(t *testing.T) {
 	t.Run("Returns a slice of all the items in the list", func(t *testing.T) {
 		list := linkedlist.New[int]()
+		list.Append(1).Append(2).Append(3).Append(4)
 
-		list.Append(1)
-		list.Append(2)
-		list.Append(3)
-		list.Append(4)
+		items := list.Items()
 
-		require.Equal(t, []int{1, 2, 3, 4}, list.Items())
+		require.Equal(t, []int{1, 2, 3, 4}, items)
 	})
 }
 
@@ -87,10 +81,7 @@ func TestSize(t *testing.T) {
 func TestIndexOf(t *testing.T) {
 	t.Run("Returns the node position containing item in the list", func(t *testing.T) {
 		list := linkedlist.New[int]()
-		list.Append(1)
-		list.Append(2)
-		list.Append(3)
-		list.Append(4)
+		list.Append(1).Append(2).Append(3).Append(4)
 
 		found, index := list.IndexOf(2)
 

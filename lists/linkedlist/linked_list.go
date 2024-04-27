@@ -22,7 +22,7 @@ func New[T GenericItem]() *List[T] {
 	return &List[T]{}
 }
 
-func (l *List[T]) Append(item T) {
+func (l *List[T]) Append(item T) *List[T] {
 	if l.size == 0 {
 		l.first = &Node[T]{Item: item, next: nil}
 		l.size++
@@ -37,6 +37,8 @@ func (l *List[T]) Append(item T) {
 			}
 		}
 	}
+
+	return l
 }
 
 func (l *List[T]) Size() int {
