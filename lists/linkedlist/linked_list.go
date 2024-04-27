@@ -9,6 +9,10 @@ type Node[T GenericItem] struct {
 	next *Node[T]
 }
 
+func (t *Node[T]) Next() *Node[T] {
+	return t.next
+}
+
 type List[T GenericItem] struct {
 	first *Node[T]
 	size  int
@@ -18,10 +22,20 @@ func NewList[T GenericItem]() *List[T] {
 	return &List[T]{}
 }
 
-func (l *List[T]) Append(node Node[T]) {
+func (l *List[T]) Append(item T) {
 	if l.size == 0 {
-		l.first = &node
+		l.first = &Node[T]{Item: item, next: nil}
 		l.size++
+	} else {
+		n := l.first
+		for range l.size {
+			if n.next == nil {
+				n.next = &Node[T]{Item: item, next: nil}
+				l.size++
+			} else {
+				n = n.next
+			}
+		}
 	}
 }
 
