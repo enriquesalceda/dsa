@@ -46,9 +46,7 @@ func TestAppend(t *testing.T) {
 
 func TestFirst(t *testing.T) {
 	t.Run("Returns the first node in the list", func(t *testing.T) {
-		list := linkedlist.NewEmpty[int]()
-
-		list.Append(1)
+		list := linkedlist.NewWithItems(1)
 
 		require.Equal(t, &linkedlist.Node[int]{Item: 1}, list.First())
 	})
@@ -56,8 +54,7 @@ func TestFirst(t *testing.T) {
 
 func TestItems(t *testing.T) {
 	t.Run("Returns a slice of all the items in the list", func(t *testing.T) {
-		list := linkedlist.NewEmpty[int]()
-		list.Append(1).Append(2).Append(3).Append(4)
+		list := linkedlist.NewWithItems(1, 2, 3, 4)
 
 		items := list.Items()
 
@@ -80,8 +77,7 @@ func TestSize(t *testing.T) {
 
 func TestIndexOf(t *testing.T) {
 	t.Run("Returns the node position containing item in the list", func(t *testing.T) {
-		list := linkedlist.NewEmpty[int]()
-		list.Append(1).Append(2).Append(3).Append(4)
+		list := linkedlist.NewWithItems(1, 2, 3, 4)
 
 		found, index := list.IndexOf(2)
 
