@@ -18,7 +18,7 @@ type List[T GenericItem] struct {
 	size  int
 }
 
-func NewList[T GenericItem]() *List[T] {
+func New[T GenericItem]() *List[T] {
 	return &List[T]{}
 }
 

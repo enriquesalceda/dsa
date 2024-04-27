@@ -9,7 +9,7 @@ import (
 func TestAppend(t *testing.T) {
 	t.Run("When empty list", func(t *testing.T) {
 		t.Run("Creates and inserts item at the first item", func(t *testing.T) {
-			list := linkedlist.NewList[int]()
+			list := linkedlist.New[int]()
 
 			list.Append(1)
 
@@ -18,7 +18,7 @@ func TestAppend(t *testing.T) {
 
 		t.Run("When there is only one item in the list", func(t *testing.T) {
 			t.Run("Creates and inserts item into the last node of the list as the second item", func(t *testing.T) {
-				list := linkedlist.NewList[int]()
+				list := linkedlist.New[int]()
 
 				list.Append(1)
 				list.Append(2)
@@ -31,7 +31,7 @@ func TestAppend(t *testing.T) {
 
 		t.Run("When there are two items in the list", func(t *testing.T) {
 			t.Run("Creates and inserts item into the last node of the list as the third item", func(t *testing.T) {
-				list := linkedlist.NewList[int]()
+				list := linkedlist.New[int]()
 
 				list.Append(1)
 				list.Append(2)
@@ -50,7 +50,7 @@ func TestAppend(t *testing.T) {
 
 func TestFirst(t *testing.T) {
 	t.Run("Returns the first node in the list", func(t *testing.T) {
-		list := linkedlist.NewList[int]()
+		list := linkedlist.New[int]()
 
 		list.Append(1)
 
@@ -60,7 +60,7 @@ func TestFirst(t *testing.T) {
 
 func TestItems(t *testing.T) {
 	t.Run("Returns a slice of all the items in the list", func(t *testing.T) {
-		list := linkedlist.NewList[int]()
+		list := linkedlist.New[int]()
 
 		list.Append(1)
 		list.Append(2)
@@ -73,7 +73,7 @@ func TestItems(t *testing.T) {
 
 func TestSize(t *testing.T) {
 	t.Run("Returns list size", func(t *testing.T) {
-		list := linkedlist.NewList[int]()
+		list := linkedlist.New[int]()
 
 		list.Append(1)
 		list.Append(2)
