@@ -83,3 +83,23 @@ func (l *List[T]) IndexOf(item T) (bool, int) {
 
 	return false, 0
 }
+
+func (l *List[T]) InsertAt(desiredIndex int, newItem T) {
+	if l.Size() < desiredIndex {
+		panic("linked queue does not have this index")
+	}
+
+	if desiredIndex == 0 {
+		panic("linked queue index starts from one (1)")
+	}
+
+	n := l.first
+	for i := 1; i < l.size; i++ {
+		if i == desiredIndex-1 {
+			n.next = &Node[T]{Item: newItem, next: n.Next()}
+			l.size++
+			break
+		}
+		n = n.next
+	}
+}

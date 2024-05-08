@@ -39,6 +39,7 @@ func TestAppend(t *testing.T) {
 				require.Equal(t, 2, list.First().Next().Item)
 				require.Equal(t, 3, list.First().Next().Next().Item)
 				require.Equal(t, 4, list.First().Next().Next().Next().Item)
+				require.Equal(t, []int{1, 2, 3, 4}, list.Items())
 			})
 		})
 	})
@@ -93,5 +94,41 @@ func TestNewWithItems(t *testing.T) {
 		items := list.Items()
 
 		require.Equal(t, []int{1, 2, 3, 4}, items)
+	})
+}
+
+func TestInsert(t *testing.T) {
+	t.Run("When it is replacing the first item", func(t *testing.T) {
+		t.Run("Creates and inserts item in the ith node of the list", func(t *testing.T) {
+			list := linkedlist.NewWithItems(1, 2, 4, 5, 6)
+
+			list.InsertAt(3, 3)
+
+			require.Equal(t, []int{1, 2, 3, 4, 5, 6}, list.Items())
+		})
+	})
+
+	t.Run("Panics when desired index does not exist", func(t *testing.T) {
+		list := linkedlist.NewWithItems(1, 2, 3)
+
+		require.Panics(
+			t,
+			func() {
+				list.InsertAt(5, 5)
+			},
+			"linked queue does not have this index",
+		)
+	})
+
+	t.Run("Panics when desired index is zero", func(t *testing.T) {
+		list := linkedlist.NewWithItems(1, 2, 3)
+
+		require.Panics(
+			t,
+			func() {
+				list.InsertAt(0, 1)
+			},
+			"linked queue index starts from one (1)",
+		)
 	})
 }
