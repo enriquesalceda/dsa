@@ -115,6 +115,15 @@ func TestInsert(t *testing.T) {
 
 			require.Equal(t, []int{1, 2, 3, 4, 5, 6}, list.Items())
 		})
+
+		t.Run("at the end", func(t *testing.T) {
+			list := linkedlist.NewWithItems(1, 2, 3, 3)
+
+			list.InsertAt(4, 4)
+
+			require.Equal(t, []int{1, 2, 3, 4}, list.Items())
+
+		})
 	})
 
 	t.Run("Panics when desired index does not exist", func(t *testing.T) {
