@@ -34,13 +34,13 @@ func NewWithItems[T GenericItem](items ...T) *List[T] {
 
 func (l *List[T]) Append(item T) *List[T] {
 	if l.size == 0 {
-		l.first = &Node[T]{Item: item, next: nil}
+		l.first = createNode(item, nil)
 		l.size++
 	} else {
 		n := l.first
 		for range l.size {
 			if n.next == nil {
-				n.next = &Node[T]{Item: item, next: nil}
+				n.next = createNode(item, nil)
 				l.size++
 			} else {
 				n = n.next
@@ -96,21 +96,25 @@ func (l *List[T]) InsertAt(desiredIndex int, newItem T) {
 	n := l.first
 	for i := 1; i < l.size; i++ {
 		if i == desiredIndex {
-			l.first = &Node[T]{Item: newItem, next: n.next}
+			l.first = createNode(newItem, n.next)
 			break
 		}
 
 		if i == desiredIndex-1 {
 			if l.size == i+1 {
-				n.next = &Node[T]{Item: newItem, next: nil}
+				n.next = createNode(newItem, nil)
 				break
 			}
 
-			n.next = &Node[T]{Item: newItem, next: n.Next()}
+			n.next = createNode(newItem, n.next)
 			l.size++
 			break
 		}
 
 		n = n.next
 	}
+}
+
+func createNode[T GenericItem](item T, next *Node[T]) *Node[T] {
+	return &Node[T]{Item: item, next: next}
 }
