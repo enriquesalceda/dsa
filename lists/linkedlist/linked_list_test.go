@@ -2,8 +2,9 @@ package linkedlist_test
 
 import (
 	"dsa/lists/linkedlist"
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestAppend(t *testing.T) {
@@ -98,8 +99,8 @@ func TestNewWithItems(t *testing.T) {
 }
 
 func TestInsert(t *testing.T) {
-	t.Run("When it is replacing the first item", func(t *testing.T) {
-		t.Run("Creates and inserts item in the ith node of the list", func(t *testing.T) {
+	t.Run("Creates and inserts item in the ith node of the list", func(t *testing.T) {
+		t.Run("in the middle", func(t *testing.T) {
 			list := linkedlist.NewWithItems(1, 2, 4, 5, 6)
 
 			list.InsertAt(3, 3)
