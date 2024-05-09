@@ -85,7 +85,7 @@ func (l *List[T]) IndexOf(item T) (bool, int) {
 }
 
 func (l *List[T]) InsertAt(desiredIndex int, newItem T) {
-	if l.Size() < desiredIndex {
+	if desiredIndex > l.size {
 		panic("linked queue does not have this index")
 	}
 
