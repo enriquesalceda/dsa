@@ -100,6 +100,14 @@ func TestNewWithItems(t *testing.T) {
 
 func TestInsert(t *testing.T) {
 	t.Run("Creates and inserts item in the ith node of the list", func(t *testing.T) {
+		t.Run("at the beginning", func(t *testing.T) {
+			list := linkedlist.NewWithItems(0, 2, 3, 4, 5)
+
+			list.InsertAt(1, 1)
+
+			require.Equal(t, []int{1, 2, 3, 4, 5}, list.Items())
+		})
+
 		t.Run("in the middle", func(t *testing.T) {
 			list := linkedlist.NewWithItems(1, 2, 4, 5, 6)
 

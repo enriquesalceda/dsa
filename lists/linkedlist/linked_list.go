@@ -95,6 +95,11 @@ func (l *List[T]) InsertAt(desiredIndex int, newItem T) {
 
 	n := l.first
 	for i := 1; i < l.size; i++ {
+		if i == desiredIndex {
+			l.first = &Node[T]{Item: newItem, next: n.next}
+			break
+		}
+
 		if i == desiredIndex-1 {
 			n.next = &Node[T]{Item: newItem, next: n.Next()}
 			l.size++
