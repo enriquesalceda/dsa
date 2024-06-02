@@ -15,7 +15,7 @@ func TestBinarySearch(t *testing.T) {
 			require.Equal(t, 6, index)
 		})
 
-		t.Run("returns error 'not found; when we search for the value 20", func(t *testing.T) {
+		t.Run("returns error 'not found' when we search for the value 20", func(t *testing.T) {
 			index, err := algorithms.BinarySearch([]int{-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10}, 20)
 			require.Error(t, errors.New("not found"), err)
 			require.Equal(t, -1, index)
